@@ -17,6 +17,8 @@ function calculateTriangleArea(){
     // show triangle area
     const areaSpan = document.getElementById('triangle-area');
     areaSpan.innerText = area;
+
+    addToCalculationEntry('Triangle', area);
 }
 
 function calculateRectangleArea(){
@@ -30,29 +32,45 @@ function calculateRectangleArea(){
     const lengthValueText = lengthField.value;
     const length = parseFloat(lengthValueText);
 
+    // validate input: width and length
+    if(isNaN(width) || isNaN(length)){
+        alert('Please insert a number');
+        return;
+    }
+
     // calculate rectangle area
     const rectangleArea = width * length;
 
     // show rectangle area
     const rectangleAreaSpan = document.getElementById('rectangle-area');
-    rectangleAreaSpan.innerText = rectangleArea;
-    
+    rectangleAreaSpan.innerText = rectangleArea; 
+
+    addToCalculationEntry('Rectangle', rectangleArea);
 }
 
 function calculateEllipseArea(){
     const majorRadius = getInputValue('ellipse-major-radius');
-    console.log(majorRadius);
     const minorRadius = getInputValue('ellipse-minor-radius');
+    console.log(majorRadius, minorRadius);
     const area = 3.1416 * majorRadius * minorRadius;
     setElementInnerText('ellipse-area', area);
+
+    addToCalculationEntry('Ellipse', area);
 }
 
 function calculateParallelogramArea(){
     const base = getInputValue('parallelogram-base');
     const height = getInputValue('parallelogram-height');
-
+    // validate
+    if(isNaN(base) || isNaN(height)){
+        alert('Please insert a number');
+        return;
+    }
     const area = base * height;
     setElementInnerText('parallelogram-area', area);
+
+    // add to calculation entry
+    addToCalculationEntry('Parallelogram', area);
 }
 
 // reusable get input value field in number
@@ -69,3 +87,41 @@ function setElementInnerText(elementId, area){
     const element = document.getElementById(elementId);
     element.innerText = area;
 }
+
+// add to calculation entry
+/**
+ * 1. get the element where you want to add the dynamic HTML 
+ * 2. create an element you want to add
+ * 3. iff needed add some class
+ * 4. set inner HTML. it could be dynamic template string
+ * 5. append the created element as a child of the parent
+ * 
+ */
+function addToCalculationEntry(areaType, area){
+    console.log(areaType + ' ' + area);
+    const calculationEntry = document.getElementById('calculationEntry');
+
+    const count = calculationEntry.childElementCount;
+
+    const p = document.createElement('p');
+    // hard codded html string
+    // p.innerHTML = areaType + ' ' + area;
+
+    // by template string 
+    p.classList.add('my-4');
+    p.innerHTML = `${count + 1}. ${areaType} ${area} cm<sup>2</sup> <button class="btn btn-sm btn-success">Convert</button>`
+
+    calculationEntry.appendChild(p);
+}
+
+
+// Data validation
+/*
+* 1. set the proper type of the input field. (number, data email)
+* 2. check type using typeof
+* 3. NaN means : Not a Number. isNaN is checking whether the input is not a number or not
+*4. 
+
+
+*/
+

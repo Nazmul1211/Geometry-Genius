@@ -20,16 +20,16 @@
             <!-- shape container -->
             <!-- flex-1 will take the necessary space needed for it -->
             <div class="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> 
-                <!-- traingle card -->
+                <!-- triangle card -->
                 <div class="card w-96 bg-white shadow-xl">
                     <figure><img src="images/triangle.png" alt="triangle" /></figure>
                     <div class="card-body">
                       <h2 class="card-title">Triangle</h2>
                       <p>Area (A) = 0.5 X b X h</p>
                       <p>
-                        <input type="text" class="border ml-4 bg-gray-100 text-xl w-24 px-2" placeholder="base" name="" id="triangle-base">
+                        <input type="number" class="border ml-4 bg-gray-100 text-xl w-24 px-2" placeholder="base" name="" id="triangle-base">
                         <span class="ml-2">cm</span>
-                        <input type="text" class="border ml-4 bg-gray-100 text-xl w-24 px-2" placeholder="height" name="" id="triangle-height">
+                        <input type="number" class="border ml-4 bg-gray-100 text-xl w-24 px-2" placeholder="height" name="" id="triangle-height">
                         <span class="ml-2">cm</span>
                       </p>
                       <p class="text-xl">Area: <span class="font-bold" id="triangle-area">0</span> cm<sup>2</sup></p>
@@ -81,9 +81,9 @@
                       <h2 class="card-title">Ellipse</h2>
                       <p>Area (A) = πab</p>
                       <p>
-                        <input type="text" class="border ml-4 bg-gray-100 text-xl w-24 px-2" placeholder="large" name="" id="ellipse-major-radius">
+                        <input type="number" class="border ml-4 bg-gray-100 text-xl w-24 px-2" placeholder="large" name="" id="ellipse-major-radius">
                         <span class="ml-2">cm</span>
-                        <input type="text" class="border ml-4 bg-gray-100 text-xl w-24 px-2" placeholder="short" name="" id="Ellipse-minor-radius">
+                        <input type="number" class="border ml-4 bg-gray-100 text-xl w-24 px-2" placeholder="short" name="" id="Ellipse-minor-radius">
                         <span class="ml-2">cm</span>
                       </p>
                       <p class="text-xl">Area: <span class="font-bold" id="ellipse-area">0</span> cm<sup>2</sup></p>
@@ -118,6 +118,9 @@
             <!-- area calculator -->
             <div class="w-[400px]">
                 <div class="text-4xl">Area Calculator</div>
+                <div id="calculationEntry">
+
+                </div>
             </div>
         </div>
     </main>
